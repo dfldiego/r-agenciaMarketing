@@ -1,3 +1,9 @@
+## Dependencias instaladas
+
+-REACT-ICONS: npm install react-icons --save
+
+-REACT-ROUTER-DOM: npm install react-router-dom
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
