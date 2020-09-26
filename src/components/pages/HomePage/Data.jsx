@@ -9,6 +9,7 @@ export const homeObjOne = {
     img: 'images/svg-1.svg',
     alt: 'Tarjeta de Credito',
 }
+
 export const homeObjTwo = {
     lightBg: true,
     lightText: false,
