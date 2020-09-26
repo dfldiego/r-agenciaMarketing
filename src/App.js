@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './components/pages/HomePage/Home';
 import Footer from './components/pages/Footer/Footer';
 import Services from './components/pages/Services/Services';
+import Products from './components/pages/Products/Products';
+import SignUp from './components/pages/SignUp/SignUp';
 
 function App() {
   return (
@@ -13,8 +15,8 @@ function App() {
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/servicios' component={Services} />
-        <Route path='/productos' component={Product} />
-        <Route path='/crear-cuenta' component={SingUp} />
+        <Route path='/productos' component={Products} />
+        <Route path='/crear-cuenta' component={SignUp} />
       </Switch>
       <Footer />
     </Router>
