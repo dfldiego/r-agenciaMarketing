@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { MdFingerprint } from 'react-icons/md';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { Button } from './Button';
 import './Navbar.css';
+import { IconContext } from 'react-icons/lib';
 
 const Navbar = () => {
 
@@ -21,54 +22,60 @@ const Navbar = () => {
         }
     }
 
+    useEffect(() => {
+        showButton();
+    }, []);
+
     window.addEventListener('resize', showButton);
 
     return (
         <>
-            <div className="navbar">
-                <div className="navbar-container container">
-                    <Link to="/" className="navbar-logo">
-                        <MdFingerprint
-                            className="navbar-icon"
-                        />
+            <IconContext.Provider value={{ color: '#fff' }}>
+                <div className="navbar">
+                    <div className="navbar-container container">
+                        <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+                            <MdFingerprint
+                                className="navbar-icon"
+                            />
                         LONGO
                     </Link>
-                    <div className="menu-icon" onClick={handleClick}>
-                        {click ? <FaTimes /> : <FaBars />}
-                    </div>
-                    <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-                        <li className="nav-item">
-                            <Link to='/' className="nav-links">
-                                Inicio
+                        <div className="menu-icon" onClick={handleClick}>
+                            {click ? <FaTimes /> : <FaBars />}
+                        </div>
+                        <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+                            <li className="nav-item">
+                                <Link to='/' className="nav-links" onClick={closeMobileMenu}>
+                                    Inicio
                             </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to='/servicios' className="nav-links">
-                                Servicios
+                            </li>
+                            <li className="nav-item">
+                                <Link to='/servicios' className="nav-links" onClick={closeMobileMenu}>
+                                    Servicios
                             </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to='/productos' className="nav-links">
-                                Productos
+                            </li>
+                            <li className="nav-item">
+                                <Link to='/productos' className="nav-links" onClick={closeMobileMenu}>
+                                    Productos
                             </Link>
-                        </li>
-                        <li className="nav-btn">
-                            {button ? (
-                                <Link to='/crear-cuenta' className="btn-link">
-                                    <Button buttonStyle='btn--outline'>Crear cuenta</Button>
-                                </Link>
-                            ) : (
-                                    <Link to='/crear-cuenta' className="btn-link">
-                                        <Button
-                                            buttonStyle='btn--outline'
-                                            buttonSize='btn-mobile'
-                                        >Crear Cuenta</Button>
+                            </li>
+                            <li className="nav-btn">
+                                {button ? (
+                                    <Link to='/crear-cuenta' className="btn-link" >
+                                        <Button buttonStyle='btn--outline'>CREAR CUENTA</Button>
                                     </Link>
-                                )}
-                        </li>
-                    </ul>
+                                ) : (
+                                        <Link to='/crear-cuenta' className="btn-link" onClick={closeMobileMenu}>
+                                            <Button
+                                                buttonStyle='btn--outline'
+                                                buttonSize='btn--mobile'
+                                            >CREAR CUENTA</Button>
+                                        </Link>
+                                    )}
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            </IconContext.Provider>
         </>
     )
 }
